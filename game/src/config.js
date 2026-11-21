@@ -1,18 +1,18 @@
 // Firefly Hollow — Spot the Difference — Scene Configuration
 // All data-driven: palettes, props, and 7 differences per scene.
 
-export const SCENE_COUNT = 3;
-export const DIFFS_PER_SCENE = 7;
-export const SCENE_TIME_MS = 3 * 60 * 1000; // 3:00 per scene
-export const HEARTS_PER_SCENE = 3;
-export const HINTS_PER_SCENE = 3;
-export const SCORE_PER_FIND = 100;
-export const STREAK_BONUS = 50; // per consecutive find
-export const WRONG_CLICK_PENALTY_MS = 5000;
-export const HINT_PULSE_MS = 2000;
+const SCENE_COUNT = 3;
+const DIFFS_PER_SCENE = 7;
+const SCENE_TIME_MS = 3 * 60 * 1000; // 3:00 per scene
+const HEARTS_PER_SCENE = 3;
+const HINTS_PER_SCENE = 3;
+const SCORE_PER_FIND = 100;
+const STREAK_BONUS = 50; // per consecutive find
+const WRONG_CLICK_PENALTY_MS = 5000;
+const HINT_PULSE_MS = 2000;
 
 // Scene definitions: 0=Dawn Meadow, 1=Noon Picnic, 2=Dusk Campfire
-export const SCENES = [
+const SCENES = [
   {
     id: 0,
     name: 'Dawn Meadow',
@@ -162,16 +162,16 @@ export const SCENES = [
 ];
 
 // Shared constants
-export const CANVAS_W = 600;
-export const CANVAS_H = 400;
-export const PANEL_GAP = 20;
-export const HUD_HEIGHT = 80;
-export const RING_COLOR = '#ffeb3b'; // bright yellow
-export const RING_COLOR_FOUND = '#4caf50'; // green
-export const RING_RADIUS = 28;
-export const MAGNIFIER_RADIUS = 100;
-export const MAGNIFIER_ZOOM = 2;
-export const RETICLE_SIZE = 24;
+const CANVAS_W = 600;
+const CANVAS_H = 400;
+const PANEL_GAP = 20;
+const HUD_HEIGHT = 80;
+const RING_COLOR = '#ffeb3b'; // bright yellow
+const RING_COLOR_FOUND = '#4caf50'; // green
+const RING_RADIUS = 28;
+const MAGNIFIER_RADIUS = 100;
+const MAGNIFIER_ZOOM = 2;
+const RETICLE_SIZE = 24;
 
 // RNG seed (fixed for determinism)
-export const RNG_SEED = 0x46697265; // "Fire" in hex
+const RNG_SEED = 0x46697265; // "Fire" in hex

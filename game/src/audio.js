@@ -1,7 +1,7 @@
 // Audio — WebAudio blips only (found = ding, wrong = buzz, win = arpeggio)
 // No external audio files.
 
-export class Audio {
+class Audio {
   constructor() {
     this.ctx = null;
     this.init();

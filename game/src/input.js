@@ -1,8 +1,6 @@
 // Input — mouse + keyboard handling, hit-testing against difference zones
 
-import { CANVAS_W, CANVAS_H, PANEL_GAP, HUD_HEIGHT, RING_RADIUS } from './config.js';
-
-export class InputHandler {
+class InputHandler {
   constructor(canvas, game) {
     this.canvas = canvas;
     this.game = game;

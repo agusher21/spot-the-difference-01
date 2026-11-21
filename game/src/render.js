@@ -1,8 +1,6 @@
 // Render — all canvas drawing: sky, hills, props, panels, found rings, magnifier, HUD
 
-import { SCENES, CANVAS_W, CANVAS_H, PANEL_GAP, HUD_HEIGHT, RING_COLOR, RING_COLOR_FOUND, RING_RADIUS, MAGNIFIER_RADIUS, MAGNIFIER_ZOOM } from './config.js';
-
-export class Renderer {
+class Renderer {
   constructor(canvas, hudCanvas) {
     this.canvas = canvas;
     this.hudCanvas = hudCanvas;
@@ -64,6 +62,7 @@ export class Renderer {
     const panelW = CANVAS_W;
     const panelH = CANVAS_H;
     const topY = HUD_HEIGHT;
+    const sceneIndex = scene.id;
 
     // Draw background for both panels (same sky/hills)
     for (let panel = 0; panel < 2; panel++) {
@@ -79,7 +78,7 @@ export class Renderer {
       this.ctx.fillRect(0, 0, panelW, panelH);
 
       // Sun/Moon
-      this.drawCelestial(p, panelW, panelH);
+      this.drawCelestial(p, panelW, panelH, sceneIndex);
 
       // Far hills
       this.drawHills(p.hillFar, panelW, panelH, 0.7, 0.4);
@@ -94,8 +93,8 @@ export class Renderer {
     }
   }
 
-  drawCelestial(p, w, h) {
-    if (this.sceneIndex === 2) { // Dusk - moon
+  drawCelestial(p, w, h, sceneIndex) {
+    if (sceneIndex === 2) { // Dusk - moon
       this.ctx.fillStyle = p.moon;
       this.ctx.beginPath();
       this.ctx.arc(w * 0.85, h * 0.15, 30, 0, Math.PI * 2);

@@ -1,12 +1,6 @@
 // Main — state machine (menu / play / scene-complete / all-complete), timer, score, streak, hints, hearts, scene switching
 
-import { SCENES, SCENE_TIME_MS, HEARTS_PER_SCENE, HINTS_PER_SCENE, SCORE_PER_FIND, STREAK_BONUS, WRONG_CLICK_PENALTY_MS, DIFFS_PER_SCENE } from './config.js';
-import { buildWorld } from './world.js';
-import { Renderer } from './render.js';
-import { InputHandler } from './input.js';
-import { Audio } from './audio.js';
-
-export class Game {
+class Game {
   constructor(canvas, hudCanvas) {
     this.canvas = canvas;
     this.hudCanvas = hudCanvas;
@@ -124,7 +118,7 @@ export class Game {
   }
 
   render() {
-    this.renderer.render(this.state);
+    this.renderer.render({ ...this.state, world: this.world });
     this.input.drawReticle(this.renderer.ctx);
   }
 

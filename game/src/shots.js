@@ -2,11 +2,8 @@
 // Reads URL params ?scene=<0|1|2>&found=<n> and pre-marks first n differences as found.
 // Also supports ?shot=cover|dawn|noon|dusk as shorthand.
 
-import { SCENES, DIFFS_PER_SCENE } from './config.js';
-import { buildWorld } from './world.js';
-
 // Shot presets matching the required screenshots
-export const SHOT_PRESETS = {
+const SHOT_PRESETS = {
   cover: { scene: 2, found: 3, name: '1-cover.jpg' },    // Dusk, 3 of 7 found
   dawn: { scene: 0, found: 2, name: '2-dawn.jpg' },      // Dawn, 2 of 7 found
   noon: { scene: 1, found: 4, name: '3-noon.jpg' },      // Noon, 4 of 7 found
@@ -14,7 +11,7 @@ export const SHOT_PRESETS = {
 };
 
 // Apply shot preset from URL params
-export function applyShotPreset() {
+function applyShotPreset() {
   const params = new URLSearchParams(window.location.search);
 
   // Check for shorthand ?shot= preset
@@ -43,7 +40,7 @@ export function applyShotPreset() {
 }
 
 // Get world with pre-marked differences for screenshots
-export function getShotWorld() {
+function getShotWorld() {
   const preset = applyShotPreset();
   if (preset) {
     const foundIndices = Array.from({ length: preset.found }, (_, i) => i);
@@ -53,7 +50,7 @@ export function getShotWorld() {
 }
 
 // List all shot presets for shots.json generation
-export function listShotPresets() {
+function listShotPresets() {
   return Object.entries(SHOT_PRESETS).map(([key, value]) => ({
     name: value.name,
     query: `?shot=${key}`,

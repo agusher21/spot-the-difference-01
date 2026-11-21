@@ -1,10 +1,7 @@
 // World — builds drawable element lists per scene from config
 // Handles difference application to create Original and Changed panels.
 
-import { SCENES, DIFFS_PER_SCENE } from './config.js';
-import { rng } from './random.js';
-
-export class World {
+class World {
   constructor(sceneIndex) {
     this.scene = SCENES[sceneIndex];
     this.sceneIndex = sceneIndex;
@@ -166,7 +163,7 @@ export class World {
 }
 
 // Build world for a specific scene with optional pre-found differences (for screenshots)
-export function buildWorld(sceneIndex, foundIndices = []) {
+function buildWorld(sceneIndex, foundIndices = []) {
   const world = new World(sceneIndex);
   return {
     scene: world.scene,

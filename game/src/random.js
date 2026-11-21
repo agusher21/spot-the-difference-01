@@ -1,9 +1,10 @@
 // Seeded RNG — mulberry32
 // Deterministic: same seed always produces same sequence.
 
-export class SeededRNG {
+class SeededRNG {
   constructor(seed = 0x46697265) {
     this.state = seed >>> 0;
+    this.initialSeed = seed >>> 0;
   }
 
   // Mulberry32 algorithm
@@ -45,4 +46,4 @@ export class SeededRNG {
 }
 
 // Global RNG instance
-export const rng = new SeededRNG();
+const rng = new SeededRNG();
