@@ -1,0 +1,6 @@
+[
+  { "name": "1-cover.jpg", "query": "?shot=cover" },
+  { "name": "2-dawn.jpg", "query": "?shot=dawn" },
+  { "name": "3-noon.jpg", "query": "?shot=noon" },
+  { "name": "4-dusk.jpg", "query": "?shot=dusk" }
+]
