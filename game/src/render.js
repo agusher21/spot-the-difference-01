@@ -737,16 +737,6 @@ class Renderer {
     this.hudCtx.fillStyle = '#1a1a2e';
     this.hudCtx.fillRect(0, 0, w, h);
 
-    // Dividers
-    this.hudCtx.strokeStyle = '#3a3a5e';
-    this.hudCtx.lineWidth = 1;
-    for (let x = 200; x < w; x += 200) {
-      this.hudCtx.beginPath();
-      this.hudCtx.moveTo(x, 0);
-      this.hudCtx.lineTo(x, h);
-      this.hudCtx.stroke();
-    }
-
     // Title
     this.hudCtx.font = 'bold 20px system-ui, sans-serif';
     this.hudCtx.fillStyle = '#ffeb3b';
@@ -758,44 +748,45 @@ class Renderer {
     this.hudCtx.fillStyle = '#ccc';
     this.hudCtx.fillText(SCENES[sceneIndex].name, 20, 52);
 
-    // Counter: N remaining
+    // Counter: N remaining (centered at x=320)
     const remaining = 7 - found.length;
     this.hudCtx.font = 'bold 28px system-ui, sans-serif';
     this.hudCtx.fillStyle = '#ffeb3b';
     this.hudCtx.textAlign = 'center';
-    this.hudCtx.fillText(`${remaining} to find`, 200, 40);
+    this.hudCtx.fillText(`${remaining} to find`, 320, 40);
 
-    // Timer
+    // Timer (centered at x=560)
     const mins = Math.floor(timer / 60000);
     const secs = Math.floor((timer % 60000) / 1000);
     const ms = Math.floor((timer % 1000) / 10);
     this.hudCtx.font = 'bold 24px system-ui, sans-serif';
     this.hudCtx.fillStyle = timer < 30000 ? '#ff5252' : '#fff';
-    this.hudCtx.fillText(`${mins}:${secs.toString().padStart(2,'0')}.${ms.toString().padStart(2,'0')}`, 400, 40);
+    this.hudCtx.fillText(`${mins}:${secs.toString().padStart(2,'0')}.${ms.toString().padStart(2,'0')}`, 560, 40);
 
-    // Score
+    // Score (at x=820)
     this.hudCtx.font = '16px system-ui, sans-serif';
     this.hudCtx.fillStyle = '#4caf50';
-    this.hudCtx.fillText(`Score: ${score}`, 600, 30);
+    this.hudCtx.textAlign = 'left';
+    this.hudCtx.fillText(`Score: ${score}`, 820, 30);
 
     // Streak
     if (streak > 0) {
       this.hudCtx.fillStyle = '#ff9800';
-      this.hudCtx.fillText(`Streak: ${streak}x`, 600, 52);
+      this.hudCtx.fillText(`Streak: ${streak}x`, 820, 52);
     }
 
-    // Hearts
+    // Hearts right-aligned ending at w-20
     this.hudCtx.font = '20px system-ui, sans-serif';
     this.hudCtx.textAlign = 'right';
     for (let i = 0; i < 3; i++) {
-      const x = 750 - i * 28;
+      const x = w - 20 - i * 28;
       this.hudCtx.fillStyle = i < hearts ? '#ff5252' : '#444';
       this.hudCtx.fillText('♥', x, 40);
     }
 
-    // Hints
+    // Hints row right-aligned ending at w-20 on second line
     for (let i = 0; i < 3; i++) {
-      const x = 750 - i * 28;
+      const x = w - 20 - i * 28;
       this.hudCtx.fillStyle = i < hints ? '#ffeb3b' : '#444';
       this.hudCtx.fillText('💡', x, 64);
     }

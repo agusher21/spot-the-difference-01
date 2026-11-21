@@ -88,13 +88,13 @@ class World {
       }
     }
 
-    // Expand zone bounds slightly for easier clicking
+    // Expand zone bounds slightly for easier clicking (normalized deltas)
     if (zone.bounds) {
       zone.bounds = {
-        x: zone.bounds.x - 12,
-        y: zone.bounds.y - 12,
-        w: zone.bounds.w + 24,
-        h: zone.bounds.h + 24,
+        x: zone.bounds.x - 0.02,
+        y: zone.bounds.y - 0.02,
+        w: zone.bounds.w + 0.04,
+        h: zone.bounds.h + 0.04,
       };
     }
 

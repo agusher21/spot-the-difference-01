@@ -248,13 +248,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const canvas = document.getElementById('game');
   const hudCanvas = document.getElementById('hud');
 
-  // Set canvas sizes
-  const totalW = 600 * 2 + 20;
-  const totalH = 400 + 80 + 40; // canvas + HUD + labels
+  // Compute canvas sizes from window
+  CANVAS_W = Math.floor((window.innerWidth - PANEL_GAP) / 2);
+  CANVAS_H = window.innerHeight - HUD_HEIGHT - 40;
+  const totalW = CANVAS_W * 2 + PANEL_GAP;
+  const totalH = CANVAS_H + HUD_HEIGHT + 40;
   canvas.width = totalW;
   canvas.height = totalH;
   hudCanvas.width = totalW;
-  hudCanvas.height = 80;
+  hudCanvas.height = HUD_HEIGHT;
 
   gameInstance = new Game(canvas, hudCanvas);
   gameInstance.start();

@@ -179,6 +179,12 @@ class InputHandler {
   drawReticle(ctx) {
     if (this.game.state.gameState !== 'play') return;
 
+    // Don't draw reticle in screenshot mode (?shot= or ?scene= + ?found=)
+    const params = new URLSearchParams(window.location.search);
+    if (params.has('shot') || (params.has('scene') && params.has('found'))) {
+      return;
+    }
+
     const panelW = CANVAS_W;
     const panelH = CANVAS_H;
     const topY = HUD_HEIGHT;

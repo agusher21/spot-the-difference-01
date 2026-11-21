@@ -162,8 +162,8 @@ const SCENES = [
 ];
 
 // Shared constants
-const CANVAS_W = 600;
-const CANVAS_H = 400;
+let CANVAS_W = 600;
+let CANVAS_H = 400;
 const PANEL_GAP = 20;
 const HUD_HEIGHT = 80;
 const RING_COLOR = '#ffeb3b'; // bright yellow
